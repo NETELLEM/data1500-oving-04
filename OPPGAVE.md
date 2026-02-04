@@ -331,7 +331,7 @@ SELECT * FROM Traad;
 ### 4. Finn antall grupper.
 
 *   **Relasjonsalgebra (med aggregering):**
-    > Vi bruker aggregeringsoperatoren ($\mathcal{G}$ eller $\Im$) for å telle.$$\mathcal{G}_{COUNT(gruppe\_id)}(Grupper)$$
+    > Vi bruker aggregeringsoperatoren ($\mathcal{G}$ eller $\Im$) for å telle. $$\mathcal{G}_{COUNT(gruppe\_id)}(Grupper)$$
 
 *   **SQL:**
     ```sql

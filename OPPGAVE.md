@@ -32,29 +32,29 @@ For den konseptuelle modellen fokuserer vi på hva vi lagrer og hvordan ting hen
 
 Entiteter:
 
-    Bruker: Kan være student eller lærer. Har innloggingsinfo.
+- Bruker: Kan være student eller lærer. Har innloggingsinfo.
 
-    Klasserom: Det virtuelle rommet med en ansvarlig lærer.
+- Klasserom: Det virtuelle rommet med en ansvarlig lærer.
 
-    Gruppe: En samling brukere.
+- Gruppe: En samling brukere.
 
-    Beskjed: Informasjon fra lærer i et klasserom.
+- Beskjed: Informasjon fra lærer i et klasserom.
 
-    Innlegg (Forum): Diskusjonsinnlegg som kan være start på en tråd eller et svar (hierarkisk).
+- Innlegg (Forum): Diskusjonsinnlegg som kan være start på en tråd eller et svar (hierarkisk).
 
 Relasjoner (Forhold):
 
-    En Bruker kan være medlem av mange Grupper. En Gruppe har mange Brukere (Mange-til-Mange).
+- En Bruker kan være medlem av mange Grupper. En Gruppe har mange Brukere (Mange-til-Mange).
 
-    En Gruppe kan ha tilgang til mange Klasserom. Et Klasserom kan ha mange Grupper (Mange-til-Mange).
+- En Gruppe kan ha tilgang til mange Klasserom. Et Klasserom kan ha mange Grupper (Mange-til-Mange).
     
-    En Lærer (Bruker) er ansvarlig for et Klasserom (En-til-Mange).
+- En Lærer (Bruker) er ansvarlig for et Klasserom (En-til-Mange).
     
-    Et Klasserom har mange Beskjeder.
+- Et Klasserom har mange Beskjeder.
     
-    Et Klasserom har mange Innlegg.
+- Et Klasserom har mange Innlegg.
     
-    Et Innlegg kan være et svar på et annet Innlegg (En-til-Mange, rekursivt).
+- Et Innlegg kan være et svar på et annet Innlegg (En-til-Mange, rekursivt).
 ```
 erDiagram
     Bruker }|--|{ Gruppe : "er medlem av"
@@ -318,7 +318,7 @@ SELECT * FROM Traad;
 ### 3. Finn alle studenter i en spesifikk gruppe (f.eks. gruppe_id = 1).
 
 *   **Relasjonsalgebra:**
-    > Vi må gjøre en naturlig join ($\bowtie$) mellom Brukere og GruppeMedlemmer, og deretter selektere på gruppeID og rolle. Til slutt projiserer ($\pi$) vi navnene.$$\pi_{navn}(\sigma_{gruppe\_id=1 \land rolle='student'}(Brukere \bowtie GruppeMedlemmer))$$
+    > Vi må gjøre en naturlig join ($\bowtie$) mellom Brukere og GruppeMedlemmer, og deretter selektere på gruppeID og rolle. Til slutt projiserer ($\pi$) vi navnene. $$\pi_{navn}(\sigma_{gruppe\_id=1 \land rolle='student'}(Brukere \bowtie GruppeMedlemmer))$$
 
 *   **SQL:**
     ```sql

@@ -28,7 +28,44 @@ I et klasserom kan studentene lese beskjeder fra læreren. Hvert klasserom har o
 **Oppgave:** Beskriv en konseptuell datamodell (med tekst eller ER-diagram) for systemet. Modellen skal kun inneholde entiteter, som du har valgt, og forholdene mellom dem, med kardinalitet. Du trenger ikke spesifisere attributter i denne delen.
 
 **Ditt svar:***
+For den konseptuelle modellen fokuserer vi på hva vi lagrer og hvordan ting henger sammen, uten å tenke på datatyper eller fremmednøkler ennå.
 
+Entiteter:
+
+    Bruker: Kan være student eller lærer. Har innloggingsinfo.
+
+    Klasserom: Det virtuelle rommet med en ansvarlig lærer.
+
+    Gruppe: En samling brukere.
+
+    Beskjed: Informasjon fra lærer i et klasserom.
+
+    Innlegg (Forum): Diskusjonsinnlegg som kan være start på en tråd eller et svar (hierarkisk).
+
+Relasjoner (Forhold):
+
+    En Bruker kan være medlem av mange Grupper. En Gruppe har mange Brukere (Mange-til-Mange).
+
+    En Gruppe kan ha tilgang til mange Klasserom. Et Klasserom kan ha mange Grupper (Mange-til-Mange).
+    
+    En Lærer (Bruker) er ansvarlig for et Klasserom (En-til-Mange).
+    
+    Et Klasserom har mange Beskjeder.
+    
+    Et Klasserom har mange Innlegg.
+    
+    Et Innlegg kan være et svar på et annet Innlegg (En-til-Mange, rekursivt).
+```
+erDiagram
+    Bruker }|--|{ Gruppe : "er medlem av"
+    Gruppe }|--|{ Klasserom : "har tilgang til"
+    Bruker ||--o{ Klasserom : "er ansvarlig for (lærer)"
+    Klasserom ||--o{ Beskjed : "inneholder"
+    Klasserom ||--o{ Innlegg : "har diskusjon"
+    Bruker ||--o{ Beskjed : "skriver"
+    Bruker ||--o{ Innlegg : "skriver"
+    Innlegg ||--o{ Innlegg : "svarer på"
+``` 
 
 ## Del 2: Logisk Skjema (Tabellstruktur)
 
